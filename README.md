@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # grunt-ensure
 
 > This plugin makes sure that things exist, like unit tests, documentation etc.
@@ -87,3 +88,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 _(Nothing yet)_
+=======
+grunt-ensure
+============
+
+Makes sure things exist, like unit tests, documentation etc.
+>>>>>>> ea0a6be7ebacf47b81cce152d5c953ec62aa707c
