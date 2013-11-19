@@ -14,13 +14,7 @@ find a match it issues a custom warning to alert you to the missing file.
 ```javascript
 grunt.initConfig({
   ensure: [
-    module_units : {
-        sourcePath    : ["some-directory"],
-        sourceExt     : ["js"],
-        errorMsg      : ["Unit Test for <%sourceDirectory%><%sourceFile%> not found <%targetDirectory%>"],
-        targetPath    : ["some-directory]
-        targetPattern : ["test"]
-    }
+
   ]
 });
 
