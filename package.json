@@ -17,7 +17,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/Todd-Werelius/grunt-ensure/blob/master/LICENSE-MIT"
+      "url": "https://github.com/Todd-Werelius/grunt-ensure/blob/master/LICENSE"
     }
   ],
   "main": "Gruntfile.js",
