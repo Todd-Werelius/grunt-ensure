@@ -1,14 +1,28 @@
 ## grunt-ensure v0.1
 
->Takes a specification for production files and attempts to ensure that best practice files such as unit tests or
-documentation files exist.
+>Validates that production files have associated best practice files which typically include Unit Tests, Documentation etc.
+
+## Installation
+This plugin requires Grunt `~0.4.0`
+
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started)
+guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins.
+Once you're familiar with that process, you may install this plugin with this command:
+
+```shell
+npm install grunt-ensure --save-dev
+```
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```js
+grunt.loadNpmTasks('grunt-ensure');
+```
 
 `practice`
 An array that grunt uses to create a list of practice files
 
-### Installation
 
-`npm install grunt-ensure`
 
 ### Sample Gruntfile Setup
 
