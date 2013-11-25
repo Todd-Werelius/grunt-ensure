@@ -27,18 +27,19 @@ _Run this task using the `grunt ensure` command._
 Automatically checks for the existence of best practices files and fails if they are not found
 
 ## How ensure works
-Ensure is a multi-task grunt plugin that allows you to match production files to best practice files. Ensure accepts 1 or
-more targets so that it can look for different types of practice files
+Ensure is a multi-task grunt plugin that allows you to match production files to best practice files. Ensure accepts 1:n
+targets so that it can look for different types of practice files
 
 ### Matching Production to Practice Files
-Ensure expects the matching practice files to be at least a substring of the production file that will only differ by prefix
-or suffix, for instance any of these practice files could be matched using ensure
+Ensure expects practice files to be at least a substring of the associated production file.  An exact match is not required
+since ensure can normalize the names by removing prefix or suffix information from the practice or production files before
+comparing them, for instance any of these practice files could be matched using ensure
 
-*Production* /website/js/lib/myDate.js
+*Production* - /website/js/lib/myDate.js
 
-*Production* /website/js/lib/q.myDate.js
-*Practice*   /test/lib/myDate.js
-*Practice*   /test/lib/test.myDate.js
+*Practice* - /website/js/lib/q.myDate.js
+*Practice* - /test/lib/myDate.js
+*Practice* - /test/lib/test.myDate.js
 
 ## Telling Ensure what to do using the grunfile
 
