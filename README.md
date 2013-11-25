@@ -33,13 +33,14 @@ targets so that it can look for different types of practice files
 ### Matching Production to Practice Files
 Ensure expects practice files to be at least a substring of the associated production file.  An exact match is not required
 since ensure can normalize the names by removing prefix or suffix information from the practice or production files before
-comparing them, for instance any of these practice files could be matched using ensure
+comparing them, for instance any of these practice files could be matched using ensures normalization settings
 
 *Production* - /website/js/lib/myDate.js
 
-*Practice* - /website/js/lib/q.myDate.js
-*Practice* - /test/lib/myDate.js
-*Practice* - /test/lib/test.myDate.js
+*Practice*
+- /website/js/lib/q.myDate.js
+- /test/lib/myDate.js
+- /test/lib/test.myDate.js
 
 ## Telling Ensure what to do using the grunfile
 
