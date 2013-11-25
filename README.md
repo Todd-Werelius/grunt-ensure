@@ -1,21 +1,73 @@
-## grunt-ensure
+## grunt-ensure v0.1
 
-Makes sure things exist like unit tests, documentation etc. It takes a set of directories with a file extension and searches
-the same or another directory for files that contains the same file name with a prefix or suffix attached, if it cannot
-find a match it issues a custom error to alert you to the missing file.
+>Takes a specification for production files and attempts to ensure that best practice files such as unit tests or
+documentation files exist.
+
+`practice`
+An array that grunt uses to create a list of practice files
 
 ### Installation
 
 `npm install grunt-ensure`
 
-### Setup
+### Sample Gruntfile Setup
 
 ```javascript
-grunt.initConfig({
-  ensure: [
+module.exports = function(grunt) {
 
-  ]
-});
+    // Project configuration.
+    grunt.initConfig( {
 
-grunt.loadNpmTasks('grunt-ensure');
+        ensure: {
+            options: {
+                ignoreCase     : false,
+                weakReferences : false,
+                showOrphans    : false
+            },
+            qJS : {
+                options         : {
+                },
+
+                practiceName : "QUnit Test"
+
+                production   : {
+                    root     : "tmp/website/",
+                    pattern  : ["tmp/website/**/*.js", "!tmp/website/*.js", "!tmp/website/vendor/**"],
+                    options  : {
+                        filter : "isFile"
+                    },
+                    normalize : {
+                        suffix  : "js",
+                        prefix  : null
+                    }
+                },
+
+                practice      : {
+                    root      : "tmp/tests/unit/",
+                    pattern   : ["tmp/tests/unit/**/q.*.js", "!tmp/tests/unit/*.js"],
+                    normalize : {
+                        prefix  : "q",
+                        suffix  : "js"
+                    }
+                },
+
+                templates   : {
+                    vendor       : [],
+                    utils        : [],
+                    perRoot      : [],
+                    perDir       : [],
+                    perFile      : []
+                }
+            }
+        }
+    });
+
+    // These plugins provide necessary tasks.
+    grunt.loadNpmTasks('grunt-ensure');
+
+    // Sample tasks
+    grunt.registerTask('test', ['ensure' ]);
+    grunt.registerTask('default', ['ensure']);
+
+};
 ```
