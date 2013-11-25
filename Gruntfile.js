@@ -48,7 +48,19 @@ module.exports = function(grunt) {
         ensure: {
             options: {
                 forceDirMatch   : false,
-                warnDirMismatch : true
+                warnDirMismatch : true,
+
+                production  : {
+                    root    : "tmp/website/",
+                    pattern : ["tmp/website/**/*.js", "!tmp/website/*.js", "!tmp/website/vendor/**"],
+                    options : {
+                        filter : "isFile"
+                    },
+                    normalize : {
+                        suffix  : "js",
+                        prefix  : null
+                    }
+                }
             },
             qJS : {
                 banner          : "Ensuring Production.js files have Q.Production.js Unit Tests",
