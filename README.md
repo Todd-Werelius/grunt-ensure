@@ -1,6 +1,8 @@
 ## grunt-ensure v0.1
 
 >Validates that production files have associated best practice files which typically include Unit Tests, Documentation etc.
+beta features also include the ability to process templates that can update and create test runners and js tests skeletons
+for QUnit, JUnit, and Jasmine
 
 ## Installation
 This plugin requires Grunt `~0.4.0`
