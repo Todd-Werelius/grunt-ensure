@@ -26,6 +26,7 @@ grunt.loadNpmTasks('grunt-ensure');
 - If a production file cannot be matched to best practice files grunt will abort
 
 ## How ensure works
+From the command line ... 
 ```shell
 grunt ensure
 ```
