@@ -128,11 +128,9 @@ The production object tells ensure how to find production files and how to norma
 they can be matched against best practice file names.  The ensure `options.production` object is shared among all targets
 unless it is overridden in a `options.production` object at the target scope.
 
-- options.production.root `string`
-This path prefix will be stripped from the practice file before a comparison is made
+**options.production.root** `string` A path prefix that will be stripped from the practice file before a comparison is made
 
-- options.production.pattern `string` |  `Array` of `string`
-Used to search for production files as follows in our example above
+**options.production.pattern** `string` |  `Array` of `string` used to search for production files as follows in our example above
 
 Pattern                | Action
 -----------------------|---------------------------------------------------------
