@@ -40,14 +40,21 @@ targets so that it can look for different types of practice files for each targe
 ## Telling Ensure what to do using the gruntfile.js
 
 ### Options
+In grunt options are declared at the task scope and or the target scope.  If an options object is present at both the task
+and target scope they are merged, with the target scope object overwriting and or adding properties to items already in the
+task scope
 
 ```javascript
+ensure : {       // Task scope
+    options : {
+         ignoreCase          : true,
+         allowWeakReferences : false,
+         production          : { ...
+    }
 
-options : {
-    ignoreCase          : true,
-    allowWeakReferences : false,
-    production          : { ...
-}
+    myTarget : { // Target Scope
+
+    }
 ```
 
 #### options.ignoreCase
