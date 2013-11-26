@@ -82,9 +82,9 @@ module.exports = function(grunt) {
                 "template-data"  : {
                     vendorDependencies : [],
                     commonDependencies : [],
-                    perRootTmpl        : [],
-                    perDirTmpl         : [],
-                    perFileTmpl        : []
+                    perRootTmpl        : [{file:"",upsert:false}],
+                    perDirTmpl         : [{file:"",upsert:false}],
+                    perFileTmpl        : [{file:"",upsert:false}]
                 }
             }
         }
