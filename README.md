@@ -84,7 +84,7 @@ Type       | Required
 -----------|------
 `Object`   | **YES**
 
-`Example options.production object`
+
 ```javascript
 production : {
     root      : "tmp/website/",
@@ -94,8 +94,8 @@ production : {
         prefix  : null
     }
 }
-
 ```
+`Example options.production object`
 
 The production block tells ensure how to find production files and how to normalize the directory and file names so that
 they can be matched against best practice file names.  The ensure `options.production` block is shared among all targets
