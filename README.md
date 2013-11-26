@@ -26,7 +26,7 @@ _Run this task using the `grunt ensure` command._
 
 - Matches production files to best practice files (QUnit, Doc's etc)
 - If templating information is present any missing best practice files will be created
-- If any production files cannot be found or created the task will abort grunt
+- If any production files cannot be matched to best practice files the task will abort grunt
 
 ## How ensure works
 Ensure is a multi-task grunt plugin that allows you to match production files to best practice files. Ensure accepts 1:n
