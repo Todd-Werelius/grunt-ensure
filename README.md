@@ -62,9 +62,9 @@ grunt ensure:JUnit
 ## Telling Ensure what to do using the gruntfile.js
 
 ### Options
-In grunt options are declared at the task scope and or the target scope.  If an options object is present at both the task
-and target scope they are merged, with the target scope object overwriting and or adding properties to items already in the
-task scope
+In grunt the `options` object is declared at the task scope and or the target scope.  If an `options` object is present at both the task
+and target scope they are merged, with the target scoped object overwriting and or adding properties to items already in the
+task scope object
 
 ```javascript
 ensure : {
