@@ -40,14 +40,14 @@ targets so that it can look for different types of practice files such as
 ## Telling Ensure what to do using the gruntfile.js
 
 ### Options
-#### ignoreCase
+#### options.ignoreCase
 Type: `Boolean`
 
 By default ensure requires the case of the production and practice files to match. Setting this option to true tells ensure
 to lower case all production file and best practice file names before comparing them, and treats any mis-matches as warnings
 instead of errors
 
-#### allowWeakReferences
+#### options.allowWeakReferences
 Type: `Boolean`
 
 By default ensure requires that any production and practice files that match also have duplicate directory structures after
@@ -64,11 +64,12 @@ Setting this option to true removes this requirement and only the name is matche
 both of the practice entries would match resulting in either an orphan practice or an incorrect match between the correct
 production and practice file
 
-#### production
+#### options.production
 Type: `Object`
 
-
-
+The production block tells ensure how to find production files and how to normalize the directory and file names so that
+they can be matched against best practice file names.  The options.production block is shared among all targets unless
+it is overridden in a target scope
 
 ```javascript
 production : {
