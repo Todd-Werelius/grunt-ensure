@@ -43,9 +43,8 @@ targets so that it can look for different types of practice files such as
 #### options.ignoreCase
 Type: `Boolean`
 
-By default ensure requires the case of the production and practice files to match. Setting this option to true tells ensure
-to lower case all production file and best practice file names before comparing them, and treats any mis-matches as warnings
-instead of errors
+By default ensure requires the case of the production and practice directory and file names to match. Setting this option
+to true tells ensure ignore case when comparing them, and treats any mis-matches as warnings instead of errors
 
 #### options.allowWeakReferences
 Type: `Boolean`
