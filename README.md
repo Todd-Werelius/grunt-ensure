@@ -24,8 +24,8 @@ grunt.loadNpmTasks('grunt-ensure');
 ## Ensure task
 _Run this task using the `grunt ensure` command._
 
-- Checks for the existence of best practices files
-- If templating information is present the missing files will be created
+- Matches production files to best practice files (QUnit, Doc's etc)
+- If templating information is present any missing best practice files will be created
 - If any production files cannot be found or created the task will abort grunt
 
 ## How ensure works
