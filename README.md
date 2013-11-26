@@ -40,11 +40,21 @@ targets so that it can look for different types of practice files for each targe
 ## Telling Ensure what to do using the gruntfile.js
 
 ### Options
+
+```javascript
+
+options : {
+    ignoreCase          : true,
+    allowWeakReferences : false,
+    production          : { ...
+}
+
 #### options.ignoreCase
 Type: `Boolean`
 
-By default ensure requires the case of the production and practice directory and file names to match. Setting this option
-to true tells ensure ignore case when comparing them, and treats any mis-matches as warnings instead of errors
+By default ensure ignores the case of the production and practice directory and file names to match. Setting this option
+to false tells ensure to treat case differences as non-matches when comparing them, and treats any mis-matches as errors
+instead of warnings
 
 #### options.allowWeakReferences
 Type: `Boolean`
