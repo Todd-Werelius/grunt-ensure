@@ -40,10 +40,13 @@ targets allowing you to search for and template different types of practice file
 
 ```javascript
 ensure : {
-        JUnit : {  Target Scope
+
+    JUnit : {  Target Scope
     },
-        JSDoc : {  Target Scope
+
+    JSDoc : {  Target Scope
     }
+}
 ```
 
 Target's are named objects that you provide to carry out a specific ensure sub-task for instance
