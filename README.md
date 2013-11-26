@@ -30,7 +30,12 @@ _Run this task using the `grunt ensure` command._
 
 ## How ensure works
 Ensure is a multi-task grunt plugin that allows you to match production files to best practice files. Ensure accepts 1:n
-targets so that it can look for different types of practice files
+targets so that it can look for different types of practice files such as
+
+- QUnit javascript files
+- JUnit javascript files
+- JSDoc files
+- Etc.
 
 ### Matching Production to Practice Files
 Ensure expects practice files to be at least a substring of the associated production file.  An exact match is not required
