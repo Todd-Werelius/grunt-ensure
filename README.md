@@ -22,8 +22,8 @@ grunt.loadNpmTasks('grunt-ensure');
 
 ## Ensure task
 - Matches production files to best practice files (QUnit, Doc's etc)
-- If templating information is present any missing best practice files will be created or updated
-- If any production files cannot be matched to best practice files the task will abort grunt
+- If templating information is present best practice files stubs can be created or updated
+- If any production files cannot be matched to best practice files grunt will abort
 
 ## How ensure works
 Ensure is a multi-task grunt plugin that allows you to match production files to best practice files. Ensure accepts 1:n
