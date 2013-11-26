@@ -37,19 +37,7 @@ targets so that it can look for different types of practice files such as
 - JSDoc files
 - Etc.
 
-### Matching Production to Practice Files
-Ensure expects practice files to be at least a substring of the associated production file.  An exact match is not required
-since ensure can normalize the names by removing prefix or suffix information from the practice or production files before
-comparing them, for instance any of these practice files could be matched using ensures normalization settings
-
-*Production* - /website/js/lib/myDate.js
-
-*Practice*
-- /website/js/lib/q.myDate.js
-- /test/lib/myDate.js
-- /test/lib/test.myDate.js
-
-## Telling Ensure what to do using the grunfile
+## Telling Ensure what to do using the gruntfile.js
 
 ### Options
 #### ignoreCase
@@ -74,10 +62,17 @@ Setting this option to true removes this requirement and only the name is matche
 both myFile.js entries would match resulting in either an orphan practice or an incorrect match between the correct
 production and practice file
 
-`practice`
-An array that grunt uses to create a list of practice files
+```javascript
+production    : {
+                    root      : "tmp/website/",
+                    pattern   : ["tmp/website/**/*.js", "!tmp/website/*.js", "!tmp/website/vendor/**"],
+                    normalize : {
+                        suffix  : "js",
+                        prefix  : null
+                    }
+                }
 
-
+```
 
 ### Sample Gruntfile Setup
 
