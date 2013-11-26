@@ -2,7 +2,7 @@
 
 >Ensures that production files have associated best practice files which typically would be Unit Tests, Documentation etc.
 An Alpha feature includes the ability to process templates that can update and create test runners, and create tests skeletons
-for QUnit, JUnit, and Jasmine
+for QUnit, JUnit, and Jasmine.
 
 ## Installation
 This plugin requires Grunt `~0.4.0`
@@ -30,12 +30,33 @@ _Run this task using the `grunt ensure` command._
 
 ## How ensure works
 Ensure is a multi-task grunt plugin that allows you to match production files to best practice files. Ensure accepts 1:n
-targets so that it can look for different types of practice files for each target
+targets so that it can look for different types of practice files for each target like
 
 - QUnit javascript files
 - JUnit javascript files
 - JSDoc files
 - Etc.
+
+```javascript
+ensure : {
+
+    JUnit : {  Target Scope
+    },
+    JSDoc : {  Target Scope
+    }
+```
+
+Target's are names that you provide to carry out a specific ensure task for instance
+
+Runs ensure against all targets (JUnit and JSDoc) in order they are present
+```shell
+grunt ensure
+```
+
+Runs ensure only against the JUnit target
+```shell
+grunt ensure:JUnit
+```
 
 ## Telling Ensure what to do using the gruntfile.js
 
@@ -45,15 +66,15 @@ and target scope they are merged, with the target scope object overwriting and o
 task scope
 
 ```javascript
-ensure : {       // Task scope
-    options : {
+ensure : {
+    options : { // Task scope
          ignoreCase          : true,
          allowWeakReferences : false,
          production          : { ...
     }
 
     myTarget : { // Target Scope
-
+        options : {...
     }
 ```
 
