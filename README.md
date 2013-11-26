@@ -51,17 +51,22 @@ options : {
 ```
 
 #### options.ignoreCase
-Type: `Boolean`
+Type        | Required | default
+------------|----------|--------
+`Boolean`   | **NO**   | true
 
 By default ensure ignores the case of the production and practice directory and file names to match. Setting this option
 to false tells ensure to treat case differences as non-matches when comparing them, and treats any mis-matches as errors
 instead of warnings
 
 #### options.allowWeakReferences
-Type: `Boolean`
+Type        | Required | default
+------------|----------|--------
+`Boolean`   | **NO**   | false
+
 
 By default ensure requires that any production and practice files that match also have duplicate directory structures after
-having there production and practice `root` properties (if any) stripped from there full path names, for instance the 1st
+having their production and practice `root` properties (if any) stripped from there full path names, for instance the 1st
 and 2nd files match, the 1st and 3rd would not
 
 Type       | File | Root | Resolves To
@@ -71,8 +76,8 @@ Practice   | \test\lib\myFile.js     | root=\test\   | \lib\myFile.js
 Practice   | \test\myFile.js         | ...           | myFile.js
 
 Setting this option to true removes this requirement and only the name is matched, in the above example that means that
-both of the practice entries would match resulting in either an orphan practice or an incorrect match between the correct
-production and practice file
+both of the practice entries would match resulting in either an orphan practice file or an incorrect match between the
+correct production and practice file
 
 #### options.production
 Type       | Required
