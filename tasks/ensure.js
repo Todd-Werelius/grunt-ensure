@@ -187,16 +187,15 @@ module.exports = function(grunt) {
             good,
             bad,
             warn
-
         ;
 
         // Get all production files and normalize the names for matching into a set
-        productionFiles  = grunt.file.expand(filter  , production.pattern );
-        productionSet     = stripFile( productionFiles  , production.root,production.normalize.prefix, production.normalize.suffix );
+        productionFiles   = grunt.file.expand(filter  , production.pattern );
+        productionSet     = stripFile( productionFiles  , production.normalize.root,production.normalize.prefix, production.normalize.suffix );
 
         // Get all practice files that might be associated and normalize the names for matching into a set
         bestPracticeFiles = grunt.file.expand(filter, practice.pattern   );
-        practiceSet    = stripFile( bestPracticeFiles, practice.root , practice.normalize.prefix  , practice.normalize.suffix   );
+        practiceSet       = stripFile( bestPracticeFiles, practice.normalize.root , practice.normalize.prefix  , practice.normalize.suffix   );
 
         // Map phase - create an intersection set and remove found files from normalized sets
         intersectionSet = mapToSet( productionSet, practiceSet );
@@ -208,12 +207,11 @@ module.exports = function(grunt) {
         if ( bad ) {
             logWriter("\nEnsure detected " + bad + " missing " + name,ERROR,true);
             logSet(name + " MISSING :",productionSet,productionFiles,ERROR);
-            if ( warn )
-                logSet(name + " ORPHAN  :", practiceSet,bestPracticeFiles,WARN);
-            logSet(name + " FOUND   :",intersectionSet,productionFiles,OK);
             logWriter("",NORMAL);
             grunt.fatal(name + " MISSING");
         } else if ( warn ) {
+            logSet(name + " FOUND   :",intersectionSet,productionFiles,OK);
+            logWriter("",NORMAL);
             logWriter("\nEnsure found " + good + " " + name + "(s) for "+ productionFiles.length +" production file(s), "+name+" orphans found",WARN,true);
             logSet("ORPHANS", practiceSet,bestPracticeFiles,WARN);
         } else {

@@ -120,9 +120,11 @@ Type       | Required
 
 ```javascript
 production : {
-    root      : "tmp/website/",
+
     pattern   : ["tmp/website/**/*.js", "!tmp/website/*.js", "!tmp/website/vendor/**"],
+
     normalize : {
+        root    : "tmp/website/",
         suffix  : "js",
         prefix  : null
     }
@@ -133,7 +135,7 @@ The production object tells ensure how to find production files and how to norma
 they can be matched against best practice file names.  The ensure `options.production` object is shared among all targets
 unless it is overridden in a `options.production` object at the target scope.
 
-**options.production.root** : `string` A path prefix to be stripped from a practice file before comparisons made
+
 
 **options.production.pattern** : `string` |  `Array` of `string` used to search for production files
 
@@ -146,5 +148,5 @@ Pattern                | Action
 All of the file specifications are used together to determine which files are considered production files. You can read
 more about file globbing at [Configuring Grunt Tasks - Globbing Patterns](http://gruntjs.com/configuring-tasks#globbing-patterns)
 
-
-
+**options.production.normalize** : `object` |  `Array` of `string` used to search for production files
+**options.production.normalize root** : `string` A path prefix to be stripped from a practice file before comparing

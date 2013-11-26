@@ -53,9 +53,9 @@ module.exports = function(grunt) {
                 allowWeakReferences : false,
 
                 production    : {
-                    root      : "tmp/website/",
                     pattern   : ["tmp/website/**/*.js", "!tmp/website/*.js", "!tmp/website/vendor/**"],
                     normalize : {
+                        root    : "tmp/website/",
                         suffix  : "js",
                         prefix  : null
                     }
@@ -68,12 +68,13 @@ module.exports = function(grunt) {
                 name         : "QUnit Test",
 
                 practice     : {
-                    root     : "tmp/tests/unit/",
+
                     pattern  : ["tmp/tests/unit/**/q.*.js", "!tmp/tests/unit/*.js"],
                     options  : {
                         filter : "isFile"
                     },
                     normalize : {
+                        root    : "tmp/tests/unit/",
                         prefix  : "q",
                         suffix  : "js"
                     }
