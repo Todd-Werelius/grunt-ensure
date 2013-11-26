@@ -69,8 +69,8 @@ By default ensure requires that any production and practice files that match als
 having their production and practice `root` properties (if any) stripped from there full path names, for instance the 1st
 and 2nd files match, the 1st and 3rd would not
 
-Type       | File | Root | Resolves To
------------|------|------|------------
+Type       | File                    | Root          | Resolves To
+-----------|-------------------------|---------------|------------
 Production | \site\js\lib\myFile.js  | root=\site\js | \lib\myFile.js
 Practice   | \test\lib\myFile.js     | root=\test\   | \lib\myFile.js
 Practice   | \test\myFile.js         | ...           | myFile.js
@@ -84,11 +84,7 @@ Type       | Required
 -----------|------
 `Object`   | **YES**
 
-
-The production block tells ensure how to find production files and how to normalize the directory and file names so that
-they can be matched against best practice file names.  The ensure `options.production` block is shared among all targets
-unless it is overridden in a `option.production` block at the target scope.
-
+`Example options.production object`
 ```javascript
 production : {
     root      : "tmp/website/",
@@ -101,64 +97,24 @@ production : {
 
 ```
 
-### Sample Gruntfile Setup
+The production block tells ensure how to find production files and how to normalize the directory and file names so that
+they can be matched against best practice file names.  The ensure `options.production` block is shared among all targets
+unless it is overridden in a `options.production` block at the target scope.
 
-```javascript
-module.exports = function(grunt) {
+- options.production.root `string`
+This is the part of the path that will be stripped before being compared to a practice files path
 
-    // Project configuration.
-    grunt.initConfig( {
+- options.production.pattern `string` |  `Array` of `string`
+This pattern is used to search for production files, in the example below
 
-        ensure: {
-            options: {
-                ignoreCase     : false,
-                weakReferences : false,
-                showOrphans    : false
-            },
-            qJS : {
-                options         : {
-                },
+Pattern                | Returns
+-----------------------|---------------------------------------------------------
+"tmp/website/**/*.js"  | recursively searches down the website dir for js files
+!tmp/website/*.js      | excludes any files found in the root of the website dir
+!tmp/website/vendor/** | excludes the entire vendor directory
 
-                practiceName : "QUnit Test"
+All of the file specifications are used together to determine which files are considered production files. You can read
+more about creating file globs (specifications at
 
-                production   : {
-                    root     : "tmp/website/",
-                    pattern  : ["tmp/website/**/*.js", "!tmp/website/*.js", "!tmp/website/vendor/**"],
-                    options  : {
-                        filter : "isFile"
-                    },
-                    normalize : {
-                        suffix  : "js",
-                        prefix  : null
-                    }
-                },
 
-                practice      : {
-                    root      : "tmp/tests/unit/",
-                    pattern   : ["tmp/tests/unit/**/q.*.js", "!tmp/tests/unit/*.js"],
-                    normalize : {
-                        prefix  : "q",
-                        suffix  : "js"
-                    }
-                },
 
-                templates   : {
-                    vendor       : [],
-                    utils        : [],
-                    perRoot      : [],
-                    perDir       : [],
-                    perFile      : []
-                }
-            }
-        }
-    });
-
-    // These plugins provide necessary tasks.
-    grunt.loadNpmTasks('grunt-ensure');
-
-    // Sample tasks
-    grunt.registerTask('test', ['ensure' ]);
-    grunt.registerTask('default', ['ensure']);
-
-};
-```
