@@ -41,10 +41,10 @@ targets allowing you to search for and template different types of practice file
 ```javascript
 ensure : {
 
-    JUnit : {  Target Scope
+    JUnit : {  // Target
     },
 
-    JSDoc : {  Target Scope
+    JSDoc : {  // Target
     }
 }
 ```
