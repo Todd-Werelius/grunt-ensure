@@ -31,7 +31,7 @@ From the command line
 grunt ensure
 ```
 Ensure is a multi-task plugin that allows you to match production files to best practice files. The Ensure task uses
-targets allowing you to process different types of practice files, for instance
+targets allowing you to search for and template different types of practice files, for instance
 
 - QUnit javascript files
 - JUnit javascript files
