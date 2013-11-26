@@ -84,9 +84,8 @@ Type        | Required | default
 ------------|----------|--------
 `Boolean`   | **NO**   | true
 
-By default ensure ignores the case of the production and practice directory and file names to match. Setting this option
-to false tells ensure to treat case differences as non-matches when comparing them, and treats any mis-matches as errors
-instead of warnings
+By default ensure treats case mis-matches as a warning when production and practice files are compared. Setting this option
+to false tells ensure to treat case differences as non-matches.
 
 #### options.allowWeakReferences
 Type        | Required | default
