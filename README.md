@@ -1,7 +1,7 @@
 ## grunt-ensure v0.1
 
->Ensures production files have associated best practice files which typically include Unit Tests, Documentation etc.
-A Alpha feature includes the ability to process templates that can update and create test runners, and create js tests skeletons
+>Ensures that production files have associated best practice files which typically would be Unit Tests, Documentation etc.
+An Alpha feature includes the ability to process templates that can update and create test runners, and create tests skeletons
 for QUnit, JUnit, and Jasmine
 
 ## Installation
