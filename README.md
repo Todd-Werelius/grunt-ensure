@@ -95,26 +95,25 @@ production : {
     }
 }
 ```
-`Example options.production object`
 
-The production block tells ensure how to find production files and how to normalize the directory and file names so that
-they can be matched against best practice file names.  The ensure `options.production` block is shared among all targets
-unless it is overridden in a `options.production` block at the target scope.
+The production object tells ensure how to find production files and how to normalize the directory and file names so that
+they can be matched against best practice file names.  The ensure `options.production` object is shared among all targets
+unless it is overridden in a `options.production` object at the target scope.
 
 - options.production.root `string`
-This is the part of the path that will be stripped before being compared to a practice files path
+This is the part of the path that will be stripped before being compared to potential practice files
 
 - options.production.pattern `string` |  `Array` of `string`
-This pattern is used to search for production files, in the example below
+This pattern is used to search for production files, using entries from the example option.production object above
 
-Pattern                | Returns
+Pattern                | Action
 -----------------------|---------------------------------------------------------
-"tmp/website/**/*.js"  | recursively searches down the website dir for js files
+"tmp/website/**/*.js"  | recursively searches starting at the website dir for js files
 !tmp/website/*.js      | excludes any files found in the root of the website dir
 !tmp/website/vendor/** | excludes the entire vendor directory
 
 All of the file specifications are used together to determine which files are considered production files. You can read
-more about creating file globs (specifications at
+more about creating file globbing at [Configuring Grunt Tasks - Globbing Patterns](http://gruntjs.com/configuring-tasks#globbing-patterns)
 
 
 
