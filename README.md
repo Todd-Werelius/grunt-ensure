@@ -15,15 +15,12 @@ Once you're familiar with that process, you may install this plugin with this co
 npm install grunt-ensure --save-dev
 ```
 
-
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 ```js
 grunt.loadNpmTasks('grunt-ensure');
 ```
 
 ## Ensure task
-_Run this task using the `grunt ensure` command._
-
 - Matches production files to best practice files (QUnit, Doc's etc)
 - If templating information is present any missing best practice files will be created or updated
 - If any production files cannot be matched to best practice files the task will abort grunt
