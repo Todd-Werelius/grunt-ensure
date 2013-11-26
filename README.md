@@ -26,12 +26,12 @@ grunt.loadNpmTasks('grunt-ensure');
 - If a production file cannot be matched to best practice files grunt will abort
 
 ## How ensure works
-From the command line ... 
+From the command line
 ```shell
 grunt ensure
 ```
-Ensure is a multi-task grunt plugin that allows you to match production files to best practice files. Ensure accepts 1:n
-targets so that it can look for different types of practice files for each target like
+Ensure is a multi-task plugin that allows you to match production files to best practice files. The Ensure task uses
+targets allowing you to process different types of practice files, for instance
 
 - QUnit javascript files
 - JUnit javascript files
@@ -46,8 +46,7 @@ ensure : {
     }
 ```
 
-Target's are names that you provide to carry out a specific ensure task for instance
-
+Target's are named objects that you provide to carry out a specific ensure sub-task for instance
 
 The following command runs ensure against all targets (JUnit and JSDoc) in placement order
 ```shell
