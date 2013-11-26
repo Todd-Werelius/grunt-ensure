@@ -1,6 +1,6 @@
 ## grunt-ensure v0.1
 
->Validates that production files have associated best practice files which typically include Unit Tests, Documentation etc.
+>Ensures production files have associated best practice files which typically include Unit Tests, Documentation etc.
 A Alpha feature includes the ability to process templates that can update and create test runners, and create js tests skeletons
 for QUnit, JUnit, and Jasmine
 
@@ -24,7 +24,9 @@ grunt.loadNpmTasks('grunt-ensure');
 ## Ensure task
 _Run this task using the `grunt ensure` command._
 
-Automatically checks for the existence of best practices files and fails if they are not found
+- Checks for the existence of best practices files
+- If templating information is present the missing files will be created
+- If any production files cannot be found or created the task will abort grunt
 
 ## How ensure works
 Ensure is a multi-task grunt plugin that allows you to match production files to best practice files. Ensure accepts 1:n

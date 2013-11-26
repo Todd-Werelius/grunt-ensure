@@ -169,81 +169,57 @@ module.exports = function(grunt) {
 
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
-    grunt.registerMultiTask('ensure', 'Make sure unit tests, docs etc. exist', function() {
+    grunt.registerMultiTask('ensure', "Ensures production files have associated best practice files which " +
+                            "typically include Unit Tests, Documentation etc.", function() {
 
         var
-            options        = this.options(),
-            debug          = grunt.option("debug"),
-            kvProduction   = {},
-            kvBestPractice = {},
-            kvIntersection     ,
-            productionFiles    ,
-            bestPracticeFiles  ,
+            options         = this.options(),
+            debug           = grunt.option("debug"),
+            production      = options.production,
+            practice        = this.data.practice,
+            filter          = {filter:"isFile"},
+            name            = this.data.name ? this.data.name : "Best Practice File",
+            productionSet   = {},
+            practiceSet     = {},
+            intersectionSet,
+            productionFiles,
+            bestPracticeFiles,
             good,
             bad,
-            warn,
+            warn
 
-            // The default is to ignore directories
-            globOptions = {
-                filter : "isFile"
-            }
         ;
 
-        // Print out the task:target banner, process it for template embeds
-        //if (this.data.banner) {
-        //    grunt.log.subhead(grunt.config.process(this.data.banner));
-        //}
+        // Get all production files and normalize the names for matching into a set
+        productionFiles  = grunt.file.expand(filter  , production.pattern );
+        productionSet     = stripFile( productionFiles  , production.root,production.normalize.prefix, production.normalize.suffix );
 
-        // Get all of the production files
-        this.data.production.options   = this.data.production.options ? _.extend(globOptions,this.data.production.options) : globOptions;
-        productionFiles            = grunt.file.expand(this.data.production.options, this.data.production.pattern );
+        // Get all practice files that might be associated and normalize the names for matching into a set
+        bestPracticeFiles = grunt.file.expand(filter, practice.pattern   );
+        practiceSet    = stripFile( bestPracticeFiles, practice.root , practice.normalize.prefix  , practice.normalize.suffix   );
 
-        // Get all of the files that might be associated
-        this.data.practice.options = this.data.practice.options ?  _.extend(globOptions,this.data.practice.options) : globOptions;
-        bestPracticeFiles          = grunt.file.expand(this.data.practice.options, this.data.practice.pattern);
+        // Map phase - create an intersection set and remove found files from normalized sets
+        intersectionSet = mapToSet( productionSet, practiceSet );
 
-        // Map phase - normalize and map into 2 unique sets, and 1 intersection set
-        kvBestPractice = stripFile( bestPracticeFiles, this.data.practice.root, this.data.practice.normalize.prefix, this.data.practice.normalize.suffix );
-        kvProduction   = stripFile( productionFiles , this.data.production.root, this.data.production.normalize.prefix, this.data.production.normalize.suffix );
-        kvIntersection = mapToSet( kvProduction, kvBestPractice );
-
-        if (debug) {
-            logArray("Production files",productionFiles,DEBUG);
-            logArray("QUnit files",bestPracticeFiles,DEBUG);
-            logSet("Production Orphans",kvProduction,productionFiles,DEBUG);
-            logSet("QUnit Orphans",kvBestPractice,bestPracticeFiles,DEBUG);
-        }
-
-        good = _.size(kvIntersection);
-        warn = _.size(kvBestPractice);
-        bad  = _.size(kvProduction);
+        good = _.size(intersectionSet);
+        warn = _.size(practiceSet);
+        bad  = _.size(productionSet);
 
         if ( bad ) {
-            logWriter("\nEnsure detected " + bad + " missing " + "QUnit Test",ERROR,true);
-            logSet("QUnit Test MISSING :",kvProduction,productionFiles,ERROR);
+            logWriter("\nEnsure detected " + bad + " missing " + name,ERROR,true);
+            logSet(name + " MISSING :",productionSet,productionFiles,ERROR);
             if ( warn )
-                logSet("QUnit Test ORPHAN  :", kvBestPractice,bestPracticeFiles,WARN);
-            logSet("QUnit Test FOUND   :",kvIntersection,productionFiles,OK);
+                logSet(name + " ORPHAN  :", practiceSet,bestPracticeFiles,WARN);
+            logSet(name + " FOUND   :",intersectionSet,productionFiles,OK);
             logWriter("",NORMAL);
-            grunt.fatal("QUnit Test MISSING");
+            grunt.fatal(name + " MISSING");
         } else if ( warn ) {
-            logWriter("\nEnsure found " + good + " " +"QUnit Tests" + " for "+ productionFiles.length +" production files, QUnit orphans found",WARN,true);
-            logSet("ORPHANS", kvBestPractice,bestPracticeFiles,WARN);
+            logWriter("\nEnsure found " + good + " " + name + "(s) for "+ productionFiles.length +" production file(s), "+name+" orphans found",WARN,true);
+            logSet("ORPHANS", practiceSet,bestPracticeFiles,WARN);
         } else {
-            logWriter("\nEnsure found " + good + " " +"QUnit Tests" + " for "+ productionFiles.length +" production files",OK,true);
+            logWriter("\nEnsure found " + good + " " + name + "(s) for "+ productionFiles.length +" production file(s)",OK,true);
 
         }
-
-        //if ((warn = _.size(kvBestPractice))) {
-        //    logSet(warn+" Orphaned "+"QUnit"+" tests found; clean up your mess!",kvBestPractice,bestPracticeFiles,WARN);
-        //}
-
-        //if ((bad = _.size(kvProduction))) {
-        //    logSet(bad+" Production files are missing "+"QUnit"+" tests!",kvProduction,productionFiles,ERROR);
-        //    grunt.fatal("Ensure cannot find QUnit Test files");
-        //}
-
-
     });
 };
 

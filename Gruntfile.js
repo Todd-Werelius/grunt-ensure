@@ -44,40 +44,28 @@ module.exports = function(grunt) {
           tests: ['tmp']
         },
 
-        // Configuration to be run (and then tested).
+        // Ensure production files have associated best practice files
         ensure: {
-            options: {
-                forceDirMatch   : false,
-                warnDirMismatch : true,
 
-                production  : {
-                    root    : "tmp/website/",
-                    pattern : ["tmp/website/**/*.js", "!tmp/website/*.js", "!tmp/website/vendor/**"],
-                    options : {
-                        filter : "isFile"
-                    },
+            // These options will be used on all targets unless overridden in the target block
+            options: {
+                ignoreCase          : false,
+                allowWeakReferences : false,
+
+                production    : {
+                    root      : "tmp/website/",
+                    pattern   : ["tmp/website/**/*.js", "!tmp/website/*.js", "!tmp/website/vendor/**"],
                     normalize : {
                         suffix  : "js",
                         prefix  : null
                     }
                 }
             },
-            qJS : {
-                banner          : "Ensuring Production.js files have Q.Production.js Unit Tests",
-                options         : {
-                },
 
-                production  : {
-                    root    : "tmp/website/",
-                    pattern : ["tmp/website/**/*.js", "!tmp/website/*.js", "!tmp/website/vendor/**"],
-                    options : {
-                        filter : "isFile"
-                    },
-                    normalize : {
-                        suffix  : "js",
-                        prefix  : null
-                    }
-                },
+            // QUnit Target Block - Will ensure every production file has a matching QUnit test
+            QUnitJS : {
+
+                name         : "QUnit Test",
 
                 practice     : {
                     root     : "tmp/tests/unit/",
@@ -88,19 +76,15 @@ module.exports = function(grunt) {
                     normalize : {
                         prefix  : "q",
                         suffix  : "js"
-                    },
-                    orphans : {
-                        list : true,
-                        del  : false
                     }
                 },
 
-                templates   : {
-                    vendor       : [],
-                    utils        : [],
-                    perRoot      : [],
-                    perDir       : [],
-                    perFile      : []
+                "template-data"  : {
+                    vendorDependencies : [],
+                    commonDependencies : [],
+                    perRootTmpl        : [],
+                    perDirTmpl         : [],
+                    perFileTmpl        : []
                 }
             }
         }
