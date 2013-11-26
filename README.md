@@ -77,7 +77,7 @@ production and practice file
 #### options.production
 Type       | Required
 -----------|------
-Object     | YES
+`Object`   | YES
 
 
 The production block tells ensure how to find production files and how to normalize the directory and file names so that
