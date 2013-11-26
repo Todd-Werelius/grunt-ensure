@@ -54,18 +54,19 @@ By default ensure requires that any production and practice files that match als
 having there production and practice `root` properties (if any) stripped from there full path names, for instance the first
 and second files match, the third would not
 
-+----------------------------------------------------------------------------------------+
-| Production |  \site\js\lib\myFile.js  |  root=\site\js\  |  resolves to \lib\myFile.js |
-| Practice   |  \test\lib\myFile.js     |  root=\test\     |  resolves to \lib\myFile.js |
-| Practice   |  \test\myFile.js         |  root=\test\     |  resolves to myFile.js      |
-+----------------------------------------------------------------------------------------+
-
 Setting this option to true removes this requirement and only the name is matched, in the above example that means that
 both myFile.js entries would match resulting in either an orphan practice or an incorrect match between the correct
 production and practice file
 
 #### production
 Type: `Object`
+
+Type       | File | Root | Resolves To
+-----------|------|------|------------
+Production | \site\js\lib\myFile.js  | root=\site\js | \lib\myFile.js
+Production | \test\lib\myFile.js     | root=\test\   | \lib\myFile.js
+Practice   | \test\myFile.js         | ...           | myFile.js
+
 
 ```javascript
 production : {
