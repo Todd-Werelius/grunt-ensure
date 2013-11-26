@@ -94,8 +94,8 @@ Type        | Required | default
 
 
 By default ensure requires that any production and practice files that match also have duplicate directory structures after
-having their production and practice `root` properties (if any) stripped from there full path names, for instance the 1st
-and 2nd files match, the 1st and 3rd would not
+having their production and practice `root` properties (if any) stripped from their full path names, for instance the 1st
+and 2nd files match, while the 1st and 3rd would not
 
 Type       | File                    | Root          | Resolves To
 -----------|-------------------------|---------------|------------
@@ -104,8 +104,8 @@ Practice   | \test\lib\myFile.js     | root=\test\   | \lib\myFile.js
 Practice   | \test\myFile.js         | ...           | myFile.js
 
 Setting this option to true removes this requirement and only the name is matched, in the above example that means that
-both of the practice entries would match resulting in either an orphan practice file or an incorrect match between the
-correct production and practice file
+both of the practice entries would match resulting in an orphan practice file and no ability to match the correct production
+and practice file
 
 #### options.production
 Type       | Required
