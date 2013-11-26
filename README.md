@@ -39,7 +39,6 @@ targets so that it can look for different types of practice files for each targe
 
 ```javascript
 ensure : {
-
     JUnit : {  Target Scope
     },
     JSDoc : {  Target Scope
@@ -48,15 +47,17 @@ ensure : {
 
 Target's are names that you provide to carry out a specific ensure task for instance
 
-Runs ensure against all targets (JUnit and JSDoc) in order they are present
+
+The following command runs ensure against all targets (JUnit and JSDoc) in placement order
 ```shell
 grunt ensure
 ```
 
-Runs ensure only against the JUnit target
+The following command runs ensure only against the JUnit target
 ```shell
 grunt ensure:JUnit
 ```
+
 
 ## Telling Ensure what to do using the gruntfile.js
 
@@ -67,7 +68,7 @@ task scope
 
 ```javascript
 ensure : {
-    options : { // Task scope
+    options  : { // Task scope
          ignoreCase          : true,
          allowWeakReferences : false,
          production          : { ...
