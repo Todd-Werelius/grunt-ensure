@@ -1,4 +1,4 @@
-## grunt-ensure v0.1
+## grunt-ensure v0.0.1
 
 >Ensures that production files have associated best practice files which typically would be Unit Tests, Documentation etc.
 An Alpha feature includes the ability to process templates that can update and create test runners, and create tests skeletons
@@ -96,9 +96,11 @@ Type        | Required | default
 `Boolean`   | **NO**   | false
 
 
-By default ensure requires that any production and practice files that match also have duplicate directory structures after
-having their production and practice `root` properties (if any) stripped from their full path names, for instance the 1st
-and 2nd files match, while the 1st and 3rd would not
+By default ensure requires that any production and practice files that match also have duplicate directory structures
+after being normalized.
+
+Normalization is simple, the paths have a root prefix removed before the comparison takes place, for instance the 1st
+and 2nd files match, while the 1st and 3rd would not using the default behavior and the root prefix specified below.
 
 Type       | File                    | Root          | Resolves To
 -----------|-------------------------|---------------|------------
