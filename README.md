@@ -48,6 +48,7 @@ options : {
     allowWeakReferences : false,
     production          : { ...
 }
+```
 
 #### options.ignoreCase
 Type: `Boolean`
