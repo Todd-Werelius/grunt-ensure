@@ -76,10 +76,11 @@ production and practice file
 
 #### options.production
 Type: `Object`
+Required: `Yes`
 
 The production block tells ensure how to find production files and how to normalize the directory and file names so that
-they can be matched against best practice file names.  The options.production block is shared among all targets unless
-it is overridden in a target scope
+they can be matched against best practice file names.  The ensure `options.production` block is shared among all targets
+unless it is overridden in `option.production` at the target scope.
 
 ```javascript
 production : {
