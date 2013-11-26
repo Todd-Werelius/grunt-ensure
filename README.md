@@ -75,9 +75,10 @@ both of the practice entries would match resulting in either an orphan practice 
 production and practice file
 
 #### options.production
-Type: `Object`
+Type       | Required
+-----------|------
+Object     | YES
 
-Required: `Yes`
 
 The production block tells ensure how to find production files and how to normalize the directory and file names so that
 they can be matched against best practice file names.  The ensure `options.production` block is shared among all targets
