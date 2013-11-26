@@ -129,10 +129,10 @@ they can be matched against best practice file names.  The ensure `options.produ
 unless it is overridden in a `options.production` object at the target scope.
 
 - options.production.root `string`
-This is the part of the path that will be stripped before being compared to potential practice files
+This path prefix will be stripped from the practice file before a comparison is made
 
 - options.production.pattern `string` |  `Array` of `string`
-This pattern is used to search for production files, using entries from the example option.production object above
+Used to search for production files as follows in our example above
 
 Pattern                | Action
 -----------------------|---------------------------------------------------------
