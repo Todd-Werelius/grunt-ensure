@@ -63,14 +63,14 @@ both myFile.js entries would match resulting in either an orphan practice or an 
 production and practice file
 
 ```javascript
-production    : {
-                    root      : "tmp/website/",
-                    pattern   : ["tmp/website/**/*.js", "!tmp/website/*.js", "!tmp/website/vendor/**"],
-                    normalize : {
-                        suffix  : "js",
-                        prefix  : null
-                    }
-                }
+production : {
+    root      : "tmp/website/",
+    pattern   : ["tmp/website/**/*.js", "!tmp/website/*.js", "!tmp/website/vendor/**"],
+    normalize : {
+        suffix  : "js",
+        prefix  : null
+    }
+}
 
 ```
 
